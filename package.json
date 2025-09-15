@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@solana/web3.js": "^1.98.4",
     "@tailwindcss/vite": "^4.1.13",
+    "bs58": "^6.0.0",
     "framer-motion": "^12.23.12",
     "motion": "^12.23.12",
     "react": "^19.1.1",

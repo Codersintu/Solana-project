@@ -3,6 +3,7 @@ import solana from "./assets/solana.png";
 import hame from "./assets/hame.png";
 import cancel from "./assets/cancel.png"
 import {AnimatePresence, motion} from "framer-motion"
+import Toggle from "./Toggle";
 function Navbar() {
   const [open, setOpen] = useState(false);
   return (
@@ -25,7 +26,7 @@ function Navbar() {
             </div>
           </div>
           {/* right side widget */}
-          <div className="">
+          <div className="flex items-center gap-7">
             <div className="md:block hidden">
               <ul className="flex items-center gap-7  text-white">
                 <li className="cursor-pointer">Keys</li>
@@ -37,6 +38,7 @@ function Navbar() {
             <div onClick={() => setOpen(!open)} className="md:hidden block">
               {open ==false ? <img className="w-[30px]" src={hame} alt="" /> : <img className="w-[30px]" src={cancel}/>}
             </div>
+            <Toggle/>
           </div>
         </div>
 
