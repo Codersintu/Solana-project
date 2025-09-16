@@ -48,7 +48,7 @@ function Navbar() {
     <AnimatePresence>
 
     {open==true ? 
-     <motion.div initial={{x:-400,opacity:0}} animate={{x:0,opacity:1}} exit={{x:-400,opacity:1}} transition={{duration:0.4,ease:"easeInOut"}} className="md:hidden block z-10  bg-gray-200 w-[100vw] max-w-[100%] mt-[0px] h-[270px] px-4 py-4">
+     <motion.div initial={{x:-400,opacity:0}} animate={{x:0,opacity:1}} exit={{x:-400,opacity:1}} transition={{duration:0.4,ease:"easeInOut"}} className="md:hidden block bg-gray-200 w-[100vw] max-w-[100%] mt-[0px] h-[270px] px-4 py-4 z-[999]">
           <div className="flex flex-col gap-5">
           <ul className="flex flex-col gap-4  md:block">
             <li className="text-xm font-semibold w-[100vw] bg-white p-2">Keys</li>
