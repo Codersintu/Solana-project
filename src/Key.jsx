@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Keypair } from "@solana/web3.js";
 import bs58 from "bs58"
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { PrivateKeyAtom, PublicKeyAtom } from "./recoil/atom";
 function Key() {
-  const [privkey,setprivKey]=useState("")
-    const [pubkey,setpubKey]=useState("")
+  const privkey=useRecoilValue(PrivateKeyAtom)
+  const setprivKey=useSetRecoilState(PrivateKeyAtom)
+  const pubkey=useRecoilValue(PublicKeyAtom)
+  const setpubKey=useSetRecoilState(PublicKeyAtom)
 
   const generateKey = () => {
     const keypair = Keypair.generate();
@@ -19,10 +23,10 @@ function Key() {
   },[])
 
   return (
-    <div className="w-[100vw] min-h-screen flex justify-center z-0">
-      <div className="w-[100vw] max-w-7xl rounded-xl h-[100vh] max-h-[320px] shadow border p-2 md:p-0 border-gray-400 mt-12 z-0">
+    <div className="w-[100vw] min-h-screen flex justify-center z-0 ">
+      <div className="w-[100vw] max-w-7xl rounded-xl h-full shadow border md:p-0 border-gray-400 mt-12 z-0">
         <div className=" w-full flex flex-col">
-          <div className="w-full shadow-2xs bg-gray-300 px-8 py-5 border-b border-gray-400">
+          <div className="w-full shadow-2xs rounded-t-xl bg-gray-300 px-8 py-5 border-b border-gray-400">
             <h1 className="text-black font-semibold text-xl md:text-2xl ">
               Public / Private Key Pairs
             </h1>
