@@ -35,14 +35,16 @@ function Key() {
                 <div className="flex-1 max-w-full shadow-xs p-3 border border-gray-300 text-gray-600 overflow-x-auto">
                   <p className="text-black tracking-widest break-words">{privkey}</p>
                 </div>
+                <div className="flex flex-col justify-center">
                 <motion.button
                   initial={{ scale: 1 }}
                   onClick={generateKey}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-cyan-500 text-white font-semibold px-1 md:px-4 cursor-pointer rounded-xs"
+                  className="bg-cyan-500 text-white font-semibold px-2 py-3 md:px-4 md:py-3 cursor-pointer rounded-xs"
                 >
                   Random
                 </motion.button>
+                </div>
               </div>
             </div>
             {/* public key */}
