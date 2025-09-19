@@ -9,8 +9,8 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   return (
     <>
-    <div className="w-[100vw] h-[70px] sticky top-0 z-[999] bg-gray-900 shadow-2xs flex items-center border-b border-b-gray-500">
-      <div className="w-[100vw] md:mx-[80px] mx-3">
+    <div className="w-full h-[70px] bg-gray-800 sticky top-0 z-[999] shadow-2xs flex items-center border-b border-b-gray-500">
+      <div className="w-full md:mx-[80px] mx-3">
         <div className="flex justify-between items-center">
           {/* left side widget */}
            <Link to='/'>

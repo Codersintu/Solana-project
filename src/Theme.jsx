@@ -1,32 +1,46 @@
-// import { createContext, useEffect, useState } from "react";
+import React, { useEffect, createContext, useState } from "react";
 
-// const ThemeContext=createContext();
-// const getTheme=()=>{
-//     const theme=localStorage.getItem("theme");
-//     return theme ? theme :"dark"
-// };
+const ThemeContext = createContext();
 
-// const ThemeProvider=({children})=>{
-//     const [theme,setTheme]=useState(getTheme);
-//     function toggleTheme(){
-//         setTheme((prev)=>(prev === "dark" ? "light":"dark"));
-//     }
+const getTheme = () => {
+  const theme = localStorage.getItem("theme");
+  if (!theme) {
+    // Default theme is taken as dark-theme
+    localStorage.setItem("theme", "dark-theme");
+    return "dark-theme";
+  } else {
+    return theme;
+  }
+};
 
-//     useEffect(()=>{
-        
-//         if (theme === "dark") {
-//             root.classList.add("dark")
-//         }else{
-//             root.classList.remove("dark")
-//         }
-//         localStorage.setItem("theme",theme);
-//     },[theme]);
+const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(getTheme);
 
-//     return (
-//         <ThemeContext.Provider value={{theme,toggleTheme}}>
-//             {children}
-//         </ThemeContext.Provider>
-//     )
-// };
+  function toggleTheme() {
+    if (theme === "dark-theme") {
+      setTheme("light-theme");
+    } else {
+      setTheme("dark-theme");
+    }
+  };
 
-// export {ThemeContext,ThemeProvider}
+ useEffect(() => {
+  // apply theme class to <html> tag instead of <div className="root">
+  document.documentElement.className = theme;
+  localStorage.setItem("theme", theme);
+}, [theme]);
+
+  return (
+    <ThemeContext.Provider
+      value={{
+        theme,
+        setTheme,
+        toggleTheme,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+export { ThemeContext, ThemeProvider };

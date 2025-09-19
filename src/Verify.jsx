@@ -6,25 +6,31 @@ import bs58 from "bs58"
 
 function Verify() {
   const messageatom = useRecoilValue(messageAtom);
+  const setValue=useSetRecoilState(messageAtom)
   const publickey = useRecoilValue(PublicKeyAtom);
   const signature = useRecoilValue(SignatureAtom);
   const meesagetext= new TextDecoder().decode(messageatom)
   const setdone=useSetRecoilState(successAtom)
 
   const verifySignKey = () => {
-    const messageUint8 = new TextEncoder().encode(messageatom); // same text you signed
+    const messageUint8 = new TextEncoder().encode(messageatom); 
     const signatureUint8 = bs58.decode(signature);
     const publicKeyUint8 = bs58.decode(publickey);
 
-    nacl.sign.detached.verify(messageUint8, signatureUint8, publicKeyUint8);
+  const verify=  nacl.sign.detached.verify(messageUint8, signatureUint8, publicKeyUint8);
+   if (verify === true) {
     setdone(true)
+   }else{
+     setdone(false)
+   }
+   
   };
   return (
     <div className="w-full flex flex-col p-1 md:p-5 gap-5 md:gap-10 ">
       <div className="">
         <h1>Message</h1>
         <textarea
-          onChange={(e) => setValue(e.target.value)}
+        // onChange={(e)=>setValue(e.target.value)}
           className="w-full border border-gray-300 p-2"
         >
           {meesagetext}
