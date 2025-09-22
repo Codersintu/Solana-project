@@ -6,15 +6,13 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import { RecoilRoot } from "recoil";
 import Signature from "./Signature";
-import { ThemeContext } from "./Theme";
+
 
 function App() {
-  const { theme } = useContext(ThemeContext);
-  console.log(theme);
-
+  
   return (
     <RecoilRoot>
-      <div className="root">
+      <div className="h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -16,10 +16,10 @@ function Sign() {
       const generateSignKey=(e)=>{
         e.preventDefault();
        const message = new TextEncoder().encode(values);
+       console.log(message)
        setmessage(message)
-         const secretKeyUint8 = bs58.decode(privkey);
-      const signature = nacl.sign.detached(messageatom, secretKeyUint8);
-      setSignature(bs58.encode(signature))
+      const signature = nacl.sign.detached(message, privkey);
+      setSignature(signature)
       }
   return (
     <div className="w-full flex flex-col p-1 md:p-5 gap-5 md:gap-10 ">
@@ -30,7 +30,7 @@ function Sign() {
        <div className="">
         <h1>Private Key</h1>
         <div className="flex-1 max-w-full shadow-xs p-3 border border-gray-300 text-gray-600 overflow-x-auto">
-            <p className="text-black tracking-widest break-words">{privkey}</p>
+            <p className="text-black tracking-widest break-words">{privkey instanceof Uint8Array ? bs58.encode(privkey) : "No private key"}</p>
         </div>
        </div>
        <div className="w-full">
@@ -44,7 +44,7 @@ function Sign() {
        <div className="">
         <h1>Message Signature</h1>
         <div className="flex-1 max-w-full shadow-xs p-3 border border-gray-300 text-gray-600 overflow-x-auto">
-            <p className="text-black tracking-widest break-words">{signature}</p>
+            <p className="text-black tracking-widest break-words">{signature instanceof Uint8Array ? bs58.encode(signature) : "No signature key"}</p>
         </div>
        </div>
     </div>

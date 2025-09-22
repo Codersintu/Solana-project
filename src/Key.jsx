@@ -13,10 +13,9 @@ function Key() {
   const generateKey = () => {
     const keypair = Keypair.generate();
     const secretKey = keypair.secretKey;
-    const humanreadble=bs58.encode(secretKey)
-    setprivKey(humanreadble)
+    setprivKey(secretKey)
     const publicKey = keypair.publicKey.toBase58();
-    setpubKey(publicKey)
+    setpubKey(keypair.publicKey)
   };
   useEffect(()=>{
     generateKey()
@@ -37,7 +36,7 @@ function Key() {
               <h1 className="text-xl font-semibold">Private key</h1>
               <div className="flex gap-2">
                 <div className="flex-1 max-w-full shadow-xs p-3 border border-gray-300 text-gray-600 overflow-x-auto">
-                  <p className="text-black tracking-widest break-words">{privkey}</p>
+                  <p className="text-black tracking-widest break-words">{privkey instanceof Uint8Array ? bs58.encode(privkey) : "No private key"}</p>
                 </div>
                 <div className="flex flex-col justify-center">
                 <motion.button

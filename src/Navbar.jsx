@@ -9,7 +9,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
   return (
     <>
-    <div className="w-full h-[70px] bg-gray-800 sticky top-0 z-[999] shadow-2xs flex items-center border-b border-b-gray-500">
+    <div className="w-full h-[70px]  sticky top-0 z-[999] shadow-2xs flex items-center border-b border-b-gray-500">
       <div className="w-full md:mx-[80px] mx-3">
         <div className="flex justify-between items-center">
           {/* left side widget */}
@@ -19,10 +19,10 @@ function Navbar() {
               <img className="md:w-[40px]" src={solana} alt="" />
             </div>
             <div className="flex flex-col">
-              <h1 className="text-white md:block hidden text-xl font-bold tracking-wider text-shadow-md text-shadow-cyan-400">
+              <h1 className=" md:block hidden text-xl font-bold tracking-wider text-shadow-md text-shadow-cyan-400">
                 SOLANA
               </h1>
-              <p className="text-gray-300 md:block hidden text-[8px] md:text-xs">
+              <p className="text-gray-600 dark:text-gray-300 md:block hidden text-[8px] md:text-xs">
                 Blockchain Demo: Public / Private Keys & Signing
               </p>
             </div>
@@ -31,7 +31,7 @@ function Navbar() {
           {/* right side widget */}
           <div className="flex items-center gap-7">
             <div className="md:block hidden">
-              <ul className="flex items-center gap-7  text-white">
+              <ul className="flex items-center gap-7">
                 <Link to='/keys'>
                 <li className="cursor-pointer">Keys</li>
                 </Link>
